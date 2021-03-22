@@ -32,6 +32,9 @@ export default (req, res) => {
   fetchTrendingList()
     .then((data) => {
       res.statusCode = 200;
-      res.json(data);
+      res.json({ status: 0 });
+    })
+    .catch((err) => {
+      res.send(err);
     });
 }
