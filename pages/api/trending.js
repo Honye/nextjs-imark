@@ -1,7 +1,7 @@
 const fetchTrendingList = () => {
   return fetch('https://github.com/trending')
     .then((data) => {
-      data.text().then((text) => {
+      return data.text().then((text) => {
         const $ = cheerio.load(text);
         const list = $('.Box .Box-row')
           .get()
