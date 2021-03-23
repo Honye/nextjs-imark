@@ -1,8 +1,24 @@
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 
-const fetchTrendingList = () => {
-  return fetch('https://github.com/trending')
+/**
+ * @param {object} params
+ * @param {string} [params.language] Language
+ * @param {'daily'|'weekly'|'monthly'} [params.since] Date range
+ * @param {string} [params.spoken_language_code] Spoken Language
+ */
+const fetchTrendingList = (params) => {
+  let url = 'https://github.com/trending';
+  const { language, ...query } = params;
+  if (language) {
+    url += `/${language}`
+  }
+  const queryString = Object.keys(query).map((key) => `${key}=${query[key]}`).join('&');
+  if (queryString) {
+    url += `?${queryString}`;
+  }
+
+  return fetch(url)
     .then((data) => {
       return data.text().then((text) => {
         const $ = cheerio.load(text);
@@ -31,10 +47,8 @@ const fetchTrendingList = () => {
     });
 };
 
-export default (req, res) => {
-  fetchTrendingList()
-    .then((data) => {
-      res.statusCode = 200;
-      res.json(data);
-    });
+export default async (req, res) => {
+  const resp = await fetchTrendingList(req.query);
+  res.statusCode = 200;
+  res.json(resp);
 }
