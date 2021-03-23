@@ -1,3 +1,6 @@
+import fetch from 'node-fetch';
+import cheerio from 'cheerio';
+
 const fetchTrendingList = () => {
   return fetch('https://github.com/trending')
     .then((data) => {
@@ -32,9 +35,6 @@ export default (req, res) => {
   fetchTrendingList()
     .then((data) => {
       res.statusCode = 200;
-      res.json({ status: 0 });
-    })
-    .catch((err) => {
-      res.send(err);
+      res.json(data);
     });
 }
