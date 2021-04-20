@@ -3,7 +3,8 @@ module.exports = {
     return [
       { source: '/api', destination: '/apis' },
       { source: '/api/trending/:language', destination: '/api/trending' },
-      { source: '/trending/:language', destination: '/trending' }
+      { source: '/api/github/:user', destination: '/api/github' },
+      { source: '/trending/:language', destination: '/trending' },
     ];
   }
 }
