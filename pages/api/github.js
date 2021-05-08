@@ -34,7 +34,7 @@ const fetchHomePage = async ({ user }) => {
   const $nav = $('nav.UnderlineNav-body');
   const repositories = Number($nav.children().eq(1).children('span').text().trim());
   const $container = $('.js-calendar-graph-svg').children().first();
-  const count = Number(resp.match(/(\d{1,},*\d*) contributions/)[1].replace(/,/g, ''));
+  const count = Number(resp.match(/(\d{1,},*\d*)\s+contributions/)[1].replace(/,/g, ''));
   const contributions = [];
   $container.children().each((index, el) => {
     $(el).children().each((_index, _el) => {
@@ -99,7 +99,7 @@ export default async (req, res) => {
     res.statusCode = 200;
     res.json(resp);
   } catch (e) {
-    res.statusCode = e.code;
+    res.statusCode = e.code || 500;
     res.json({
       message: e.message
     });
