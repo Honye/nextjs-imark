@@ -20,6 +20,10 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
+          <a href="/search" className={styles.card}>
+            <h3>Browser &rarr;</h3>
+            <p>Search and access the input url.</p>
+          </a>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>

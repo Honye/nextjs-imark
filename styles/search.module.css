@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 200px;
+}
+.input-wrapper {
+  height: 44px;
+  border-radius: 22px;
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+.input {
+  border-radius: 22px;
+  padding-inline-start: 30px;
+  padding-inline-end: 30px;
+  outline: none;
+  height: 100%;
+}
