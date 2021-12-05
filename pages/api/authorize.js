@@ -31,5 +31,6 @@ export default async (req, res) => {
   const url = new URL(redirect);
   const searchParams = new URLSearchParams(url.search);
   searchParams.append('token', access_token);
+  url.search = `?${searchParams.toString()}`;
   res.redirect(302, url.toString());
 };
