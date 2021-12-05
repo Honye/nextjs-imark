@@ -1,12 +1,22 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
+import { useCallback } from 'react';
+import Head from 'next/head';
+import GitHubIcon from '../assets/github.svg';
+import styles from '../styles/Home.module.css';
 export default function Home() {
+  const onGitHubLogin = useCallback(() => {
+    const searchParams = new URLSearchParams();
+    searchParams.append('client_id', process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID);
+    searchParams.append('scope', 'repo admin:repo_hook read:user');
+    searchParams.append('state', 'imark');
+    const { origin } = location;
+    searchParams.append('redirect_uri', `${origin}/api/authorize?redirect=${encodeURIComponent(location.href)}`);
+    location.href = `https://github.com/login/oauth/authorize?${searchParams.toString()}`;
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
@@ -52,6 +62,9 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <button className={styles['login-btn']} onClick={onGitHubLogin}>
+          <GitHubIcon />GitHub
+        </button>
       </main>
 
       <footer className={styles.footer}>

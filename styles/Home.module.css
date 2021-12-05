@@ -112,3 +112,15 @@
 .logo {
   height: 1em;
 }
+
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 3px;
+  border: 1px solid #adadad;
+}
+.login-btn:hover {
+  border-color: #616161;
+}
