@@ -21,16 +21,19 @@ const NavBar = () => {
               <h1>iMark</h1>
             </a>
           </Link>
-          <menu className="menu">
+          <menu className="overflow-x-auto menu">
             <li>
               <Link href="/apis"><a className="menu-item">API</a></Link>
             </li>
             <li>
               <Link href="/movies"><a className="menu-item">Movies</a></Link>
             </li>
+            <li>
+              <Link href="/posts"><a className="menu-item">Posts</a></Link>
+            </li>
           </menu>
           <div className="user">
-            <button className="sign-in" onClick={onGitHubLogin}>Sign in</button>
+            <button className="whitespace-nowrap sign-in" onClick={onGitHubLogin}>Sign in</button>
           </div>
         </nav>
       </header>
