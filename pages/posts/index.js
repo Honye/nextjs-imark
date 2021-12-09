@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import NavBar from '../components/NavBar';
-import Post from '../components/Post';
+import NavBar from '../../components/NavBar';
+import Post from '../../components/Post';
 import { getIssues } from '../../service/github.server';
 
 const Owner = 'honye';
