@@ -1,0 +1,16 @@
+.markdown-body {
+  ul {
+    list-style: initial;
+  }
+  ol {
+    list-style: decimal;
+  }
+  a {
+    color: var(--color-accent-fg);
+    text-decoration: none;
+  }
+  pre {
+    padding: 0;
+    background-color: initial;
+  }
+}

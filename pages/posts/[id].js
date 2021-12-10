@@ -1,4 +1,7 @@
-import Head from "next/head";
+import Head from 'next/head';
+import Link from 'next/link';
+import NavBar from '../../components/NavBar';
+import ArticleMarkdown from '../../components/ArticelMarkdown';
 import { gql } from '@apollo/client';
 import client from '../../service/github.gql';
 import { getIssues } from '../../service/github.server';
@@ -7,13 +10,30 @@ const Owner = 'honye';
 const Repo = 'notes';
 
 const Post = (props) => {
-  const { title } = props;
+  const { title, issue } = props;
+  const { author, createdAt } = issue;
   return (
     <>
       <Head>
         <title>{title} - iMark</title>
       </Head>
-      <h1 className="text-3xl font-semibold font-mono">{title}</h1>
+      <NavBar />
+      <div className="container mx-auto pt-5 pb-8 font-mono">
+        <article>
+          <header className="mb-10">
+            <h1 className="text-3xl font-semibold">{title}</h1>
+            <div className="flex items-center mt-2">
+              <Link href={author.url}>
+                <a className="inline-flex">
+                  <img className="w-8 h-8 rounded-full" src={author.avatarUrl} />
+                </a>
+              </Link>
+              <time className="ml-3 text-gray-500" dateTime={createdAt}>{createdAt.substr(0, 10)}</time>
+            </div>
+          </header>
+          <ArticleMarkdown className="markdown-body">{issue.body}</ArticleMarkdown>
+        </article>
+      </div>
     </>
   );
 };
@@ -42,6 +62,13 @@ export const getStaticProps = async ({ params }) => {
       repository(owner: "${Owner}", name: "${Repo}") {
         issue(number: ${id}) {
           title
+          author {
+            login
+            avatarUrl
+            url
+          }
+          createdAt
+          body
         }
       }
     }
@@ -51,6 +78,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       id,
       title: res.repository.issue.title,
+      issue: res.repository.issue,
     },
   };
 };

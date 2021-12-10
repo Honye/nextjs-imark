@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "@primer/css/color-modes/index.scss";
+// @import "@primer/css/base/index.scss";
+@import "@primer/css/markdown/index.scss";
+
+@import "./markdown.scss";
+
 html,
 body {
   padding: 0;
@@ -13,8 +19,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
