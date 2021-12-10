@@ -18,7 +18,7 @@ const Post = (props) => {
         <title>{title} - iMark</title>
       </Head>
       <NavBar />
-      <div className="container mx-auto pt-5 pb-8 font-mono">
+      <div className="container mx-auto pt-5 pb-8 font-mono px-4">
         <article>
           <header className="mb-10">
             <h1 className="text-3xl font-semibold">{title}</h1>
