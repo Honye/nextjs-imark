@@ -42,6 +42,11 @@ const NavBar = () => {
           background-color: rgba(246, 221, 102, 1);
           padding: 14px 16px;
         }
+        @media (prefers-color-scheme: dark) {
+          .header {
+            background-color: #1D1D1F;
+          }
+        }
         .nav {
           display: flex;
           align-items: center;

@@ -72,7 +72,7 @@ const Movies = (props) => {
             <div className="flip-container" key={project.id}>
               <div className="fliper">
                 <img className="front" src={project.Image} referrerPolicy="no-referrer" />
-                <div className="back movie-item__info">
+                <div className="dark:bg-gray-700 back movie-item__info">
                   <h3 style={{ marginLeft: '-0.5em' }}>{project.Title}</h3>
                   <meter
                     className="movie-item__rating"

@@ -13,7 +13,7 @@ const Post = (props) => {
           </Link>
         </div>
         <div className="p-4">
-          <div className="flex">
+          <div className="flex mb-1">
             <time className="font-mono date" dateTime={created_at}>{created_at.substr(0, 10)}</time>
             {milestone &&
               <Link href={`https://github.com/${repo.full_name}/milestone/${milestone.number}`}>
@@ -44,9 +44,6 @@ const Post = (props) => {
         </div>
       </article>
       <style jsx>{`
-        .post {
-          background-color: #fff;
-        }
         .image {
           width: 100%;
           padding-bottom: 50%;

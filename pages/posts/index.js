@@ -17,7 +17,7 @@ const Posts = (props) => {
       <NavBar />
       <ul className="container mx-auto p-6 post-list">
         {issues.map((issue) => (
-          <li key={issue.id} className="shadow-lg rounded-lg overflow-hidden">
+          <li key={issue.id} className="shadow-lg rounded-lg overflow-hidden dark:bg-gray-700">
             <Post {...issue} repo={{ full_name: `${Owner}/${Repo}` }} />
           </li>
         ))}

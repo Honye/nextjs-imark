@@ -1,10 +1,13 @@
+import { useTheme } from '@primer/react';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vs } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { vs, vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import gfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
 const ArticleMarkdown = ({ className, children }) => {
+  const theme = useTheme();
+
   return (
     <ReactMarkdown
       className={className}
@@ -19,7 +22,7 @@ const ArticleMarkdown = ({ className, children }) => {
           return !inline && match ? (
             <SyntaxHighlighter
               language={match[1]}
-              style={vs}
+              style={theme.colorScheme === 'dark' ? vscDarkPlus : vs}
               PreTag="div"
               children={String(children).replace(/\n$/, '')}
               {...props}

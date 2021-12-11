@@ -45,8 +45,10 @@ export default css`
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   transform: rotateY(180deg);
-  background-color: #fff;
+  background-color: var(--color-neutral-muted);
 }
 
 .movie-item__info {
@@ -54,7 +56,7 @@ export default css`
   line-height: 1.5;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-auto-rows: max-content;
   row-gap: 10px;
   padding: 10px;
 }
