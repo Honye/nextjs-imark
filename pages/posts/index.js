@@ -17,7 +17,7 @@ const Posts = (props) => {
       <NavBar />
       <ul className="container mx-auto p-6 post-list">
         {issues.map((issue) => (
-          <li key={issue.id} className="shadow-lg rounded-lg overflow-hidden dark:bg-gray-700">
+          <li key={issue.id} className="shadow-lg rounded-lg overflow-hidden post-item">
             <Post {...issue} repo={{ full_name: `${Owner}/${Repo}` }} />
           </li>
         ))}
@@ -27,6 +27,9 @@ const Posts = (props) => {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
           grid-gap: 2rem;
+        }
+        .post-item {
+          background: var(--color-neutral-subtle);
         }
       `}</style>
     </>

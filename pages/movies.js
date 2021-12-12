@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NavBar from '../components/NavBar';
 import { gql } from '@apollo/client';
 import client from '../service/github.gql';
 import styles from '../styles/Movies.style.js';
@@ -65,6 +66,7 @@ const Movies = (props) => {
       <Head>
         <title>Movies - iMark</title>
       </Head>
+      <NavBar />
       <div className="page">
         <h1 className="title">{props.user}'s Movies</h1>
         <ul className="movie-list">
