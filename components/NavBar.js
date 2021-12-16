@@ -1,7 +1,10 @@
 import { useCallback } from 'react';
+import { useSession, signIn } from 'next-auth/react';
 import Link from 'next/link';
 
 const NavBar = () => {
+  const { data: session } = useSession();
+
   const onGitHubLogin = useCallback(() => {
     const searchParams = new URLSearchParams();
     searchParams.append('client_id', process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID);
@@ -21,7 +24,7 @@ const NavBar = () => {
               <h1>iMark</h1>
             </a>
           </Link>
-          <menu className="overflow-x-auto menu">
+          <menu className="overflow-x-auto self-stretch menu">
             <li>
               <Link href="/apis"><a className="menu-item">API</a></Link>
             </li>
@@ -33,7 +36,11 @@ const NavBar = () => {
             </li>
           </menu>
           <div className="user">
-            <button className="whitespace-nowrap sign-in" onClick={onGitHubLogin}>Sign in</button>
+            {session ? (
+              <div>{session.user.name}</div>
+            ) : (
+              <button className="whitespace-nowrap sign-in" onClick={() => signIn()}>Sign in</button>
+            )}
           </div>
         </nav>
       </header>
@@ -67,6 +74,9 @@ const NavBar = () => {
           padding: 0;
           gap: 16px;
           font-weight: 500;
+        }
+        .menu::-webkit-scrollbar {
+          display: none;
         }
         .menu-item {
           font-size: 0.9rem;
