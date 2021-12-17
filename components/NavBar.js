@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useSession, signIn } from 'next-auth/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const NavBar = () => {
   const { data: session } = useSession();
@@ -37,7 +38,8 @@ const NavBar = () => {
           </menu>
           <div className="user">
             {session ? (
-              <div>{session.user.name}</div>
+              
+              <Image className="rounded-full" src={session.user.image} width={32} height={32} />
             ) : (
               <button className="whitespace-nowrap sign-in" onClick={() => signIn()}>Sign in</button>
             )}
