@@ -30,9 +30,9 @@ const fetchHomePage = async ({ user }) => {
   const $counter = $profile.find('a.Link--secondary');
   const followers = Number($counter.eq(0).children('span').text().trim());
   const following = Number($counter.eq(1).children('span').text().trim());
-  const stars = Number($counter.eq(2).children('span').text().trim());
   const $nav = $('nav.UnderlineNav-body');
   const repositories = Number($nav.children().eq(1).children('span').text().trim());
+  const stars = Number($('[data-tab-item="stars"]').eq(0).children('span').text().trim());
   const $container = $('.js-calendar-graph-svg').children().first();
   const count = Number(resp.match(/(\d{1,},*\d*)\s+contributions/)[1].replace(/,/g, ''));
   const contributions = [];
