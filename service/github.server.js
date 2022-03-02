@@ -22,3 +22,10 @@ export const getIssues = async (params) => {
     method: 'GET',
   });
 };
+
+export const searchIssues = async (params) => {
+  const searchParams = new URLSearchParams(params);
+  return fetch(`/search/issues?${searchParams.toString()}`, {
+    method: 'GET',
+  });
+};

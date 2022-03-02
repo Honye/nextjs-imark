@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar';
 import ArticleMarkdown from '../../components/ArticelMarkdown';
 import { gql } from '@apollo/client';
 import client from '../../service/github.gql';
-import { getIssues } from '../../service/github.server';
+import { searchIssues } from '../../service/github.server';
 
 const Owner = 'honye';
 const Repo = 'notes';
@@ -39,11 +39,10 @@ const Post = (props) => {
 };
 
 export const getStaticPaths = async () => {
-  const issues = await getIssues({
-    owner: Owner,
-    repo: Repo,
+  const search = await searchIssues({
+    q: `repo:${Owner}/${Repo} is:issue is:open`,
   }).then((res) => res.json());
-  const paths = issues.map((issue) => ({
+  const paths = search.items.map((issue) => ({
     params: {
       id: `${issue.number}`,
     },
