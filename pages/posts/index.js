@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import NavBar from '../../components/NavBar';
 import Post from '../../components/Post';
-import { getIssues } from '../../service/github.server';
+import { searchIssues } from '../../service/github.server';
 
 const Owner = 'honye';
 const Repo = 'notes';
@@ -36,11 +36,12 @@ const Posts = (props) => {
   );
 };
 
+// TODO 分页
 export const getStaticProps = async () => {
-  const issues = await getIssues({
-    owner: Owner,
-    repo: Repo,
+  const search = await searchIssues({
+    q: `repo:${Owner}/${Repo} is:issue is:open`
   }).then((resp) => resp.json());
+  const issues = search.items;
   return {
     props: {
       issues,
