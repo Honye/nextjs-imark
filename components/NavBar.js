@@ -70,6 +70,7 @@ const NavBar = () => {
         }
         .menu-item {
           font-size: 0.9rem;
+          display: inline-block;
           padding: 4px 8px;
           border-radius: 4px;
         }

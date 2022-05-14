@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Post = (props) => {
   const { title, created_at, number, labels, milestone, repo } = props;
@@ -9,7 +10,9 @@ const Post = (props) => {
       <article className="post">
         <div className="mb-4 image">
           <Link href={`/posts/${number}`}>
-            <a><img className="img" src={img} /></a>
+            <a>
+              <Image className="img" src={img} layout="fill" objectFit="cover" alt="cover" />
+            </a>
           </Link>
         </div>
         <div className="p-4">

@@ -1,4 +1,9 @@
 module.exports = {
+  images: {
+    domains: [
+      'acg.toubiec.cn',
+    ],
+  },
   async rewrites() {
     return [
       { source: '/api', destination: '/apis' },
